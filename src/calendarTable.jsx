@@ -1,52 +1,50 @@
 import React from 'react';
+import calendarHandler from './calendar.jsx';
+import localeHandler from './translations.jsx';
 
 class CalendarTable extends React.Component {
+  changeMonthButtons(nextMonth,prevMonth) {
+    return <div className="pull-right btn-group">
+      <button type="button" onClick={prevMonth} className="btn"><i className="fa fa-angle-up fa-lg" aria-hidden="true"/></button>
+      <button type="button" onClick={nextMonth} className="btn"><i className="fa fa-angle-down fa-lg" aria-hidden="true"/></button>
+    </div>;
+  }
+  checkbox(id,description,value,action) {
+    return <div className="form-group form-group-sm checkbox">
+       <input type="checkbox" className="form-control" id={id} checked={value} onChange={action}/>
+       <label htmlFor={id}>{description}</label>
+     </div>;
+  }
   render () {
-    const state = this.props.state;
-    const calendar = this.props.state.calendar;
-	const loc = state.locale.bind(state);
-	const month = calendar.month;
-	const year = calendar.year;
+    let update = this.props.update;
+    let calendar = calendarHandler(this.props.state);
+    let locale = localeHandler(this.props.state.saved.get('lang'));
+
 	const days = calendar.daysAroundCurrentMonth();
 	const dayComponent = (day,index) => {
         const today = calendar.isNow(day) ? "today" : "";
-        return <td className={today} key={"day_"+index}>{day.getDate()}</td>;
+        return <td onClick={() => update(calendar.selectDay(day))} className={today} key={"day_"+index}>{day.getDate()}</td>;
     };
 	const calendarBody = days.map((week,index) => {
 		return <tr key={"week_"+index}>{week.map(dayComponent)}</tr>;
 	});
-	const nextMonth = () => {
-	    calendar.nextMonth();
-	    this.forceUpdate();
-	};
-	const prevMonth = () => {
-        calendar.prevMonth();
-        this.forceUpdate();
-    };
-    const changeMonthButtons = (nextMonth,prevMonth) => <div className="pull-right btn-group">
-       <button type="button" onClick={prevMonth} className="btn"><i className="fa fa-angle-up fa-lg" aria-hidden="true"></i></button>
-       <button type="button" onClick={nextMonth} className="btn"><i className="fa fa-angle-down fa-lg" aria-hidden="true"></i></button>
-     </div>;
-    const checkbox = (id,description,value,action) => <div className="form-group form-group-sm checkbox">
-        <input type="checkbox" className="form-control" id={id} value={value} onClick={action}/>
-        <label htmlFor={id}>{description}</label>
-      </div>;
-
-    const showKgCheckbox = checkbox("showKgCheckbox", loc("show.kg.checkbox"), calendar.showKg, ()=>{
-        calendar.flipShowKg();
+    const showKgCheckbox = this.checkbox('showKgCheckbox', locale('show.kg.checkbox'), calendar.showKg, ()=>{
+        update(calendar.flipShowKg());
     });
-    const showKcalCheckbox = checkbox("showKcalCheckbox", loc("show.kcal.checkbox"), calendar.showKcal, ()=>{
-        calendar.flipShowKcal();
+    const showKcalCheckbox = this.checkbox('showKcalCheckbox', locale('show.kcal.checkbox'), calendar.showKcal, ()=>{
+        update(calendar.flipShowKcal());
     });
     return <table className="table calendar table-borderless">
 		<thead>
 			<tr>
 				<th colSpan="7">
-					<div className="pull-left">{loc("months")[month-1]}&nbsp;{year}</div>
-                    {changeMonthButtons(nextMonth,prevMonth)}
+					<div className="pull-left">{locale('months')[calendar.month()-1]}&nbsp;{calendar.year()}</div>
+                    {this.changeMonthButtons(
+                        () => update(calendar.nextMonth()),
+                        () => update(calendar.prevMonth()))}
 				</th>
 			</tr>
-			<tr>{loc("week.days").map((d) => <th key={"day_" + d}>{d}</th>)}</tr>
+			<tr>{locale('week.days').map((d) => <th key={"day_" + d}>{d}</th>)}</tr>
 		</thead>
 		<tbody>{calendarBody}</tbody>
 		<tfoot>

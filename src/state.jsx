@@ -1,15 +1,26 @@
-import Calendar from './calendar.jsx';
 import translations from './translations.jsx';
+import ls from 'local-storage';
+import Immutable from 'immutable';
 
-class State {
-  constructor(now, lang, updateCallback) {
-	this.calendar = new Calendar(now, () => updateCallback(this));
-	this.lang = lang;
-	this.updateCallback = updateCallback;
-  }
-  locale(key) {
-	return translations[key][this.lang];
-  }
-}
+const initStateFromLocalStorage = ls('musclepp-saved-state')
 
-export default State;
+const defaultState = {
+    lang: 'en',
+    showKcal: true,
+    showKg: false,
+    foods: [{}]
+};
+
+const now = new Date();
+
+const state = {
+    saved: Immutable.Map(initStateFromLocalStorage ? initStateFromLocalStorage : defaultState),
+    unsaved: Immutable.Map({
+        selectedDay: new Date(),
+        now: now,
+        month: now.getMonth() + 1,
+        year: now.getFullYear()})
+};
+
+
+export default state;
