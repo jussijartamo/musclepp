@@ -8,7 +8,7 @@ const defaultState = {
     lang: 'en',
     showKcal: true,
     showKg: false,
-    foods: [{}]
+    foods: [{n:"raejuusto",s:200.0,p:24,f:2.5,c:5.5}]
 };
 
 const now = new Date();

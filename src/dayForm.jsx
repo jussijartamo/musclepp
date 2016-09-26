@@ -1,6 +1,7 @@
 import React from 'react';
 import calendarHandler from './calendar.jsx';
 import localeHandler from './translations.jsx';
+import FoodTable from './foodTable.jsx';
 
 class DayForm extends React.Component {
     formGroup(id, label, callback, placeholder, addon, more) {
@@ -56,10 +57,15 @@ class DayForm extends React.Component {
         <h2>{date} <small><a href="#" onClick={() => update(calendar.selectDay(null))}>{locale('day.form.close')}</a></small></h2>
         <div className="row">
         <div className="col-md-6">
+            <div className="row">
             <form className="form-horizontal">
                 {hasFoodItems ? this.formGroup("search", locale("day.form.search"), null, null, null, <div className="col-md-3 pull-left"><div className="control-label pull-left">{addFoodComponent}</div></div>) :
                 this.formGroupOnlyComponent(addFoodComponent)}
             </form>
+            </div>
+            <div className="row">
+                <FoodTable state={state}/>
+            </div>
         </div>
         <div className="col-md-6">
             <form className="form-horizontal">
