@@ -42,12 +42,12 @@ class DayForm extends React.Component {
         return c;
     }
     render() {
-        let update = this.props.update;
-        let state = this.props.state;
-        let calendar = calendarHandler(this.props.state);
-        let locale = localeHandler(this.props.state.saved.get('lang'));
-        let selectedDay = calendar.selectedDay();
-        let hasFoodItems = this.getOrEmptyList(state.saved.get('foods')).length != 0;
+        const update = this.props.update;
+        const state = this.props.state;
+        const calendar = calendarHandler(this.props.state);
+        const locale = localeHandler(this.props.state.saved.get('lang'));
+        const selectedDay = calendar.selectedDay();
+        const hasFoodItems = this.getOrEmptyList(state.saved.get('foods')).length != 0;
         const date = selectedDay.getDate() + '. ' + locale('months')[selectedDay.getMonth()] + ' ' + selectedDay.getFullYear();
         const close = <button onClick={() => update(calendar.selectDay(null))} className="btn" type="button"><i className="fa fa-close fa-lg" aria-hidden="true"></i></button>
         const addFoodCallback = () => update({unsaved: state.unsaved.set('showAddFoodForm', true)});
