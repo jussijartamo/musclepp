@@ -4,6 +4,7 @@ import CalendarTable from './calendarTable.jsx'
 import DayForm from './dayForm.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import AddFoodForm from './addFoodForm.jsx';
+import LanguageSelector from './languageSelector.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,7 +30,11 @@ class App extends React.Component {
     }
 
     return <div>
-        <div className="col-md-12">{mainComponent}</div>
+        <div className="row col-md-12">
+            <h1 className="col-md-6">Muscle++</h1>
+            <LanguageSelector className="col-md-6" update={update} state={state}/>
+        </div>
+        <div className="row col-md-12">{mainComponent}</div>
 	</div>;
   }
 }

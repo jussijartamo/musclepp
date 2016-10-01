@@ -1,3 +1,4 @@
+import ctrl from './controller.jsx';
 
 const translations = {
 	"week.days": {
@@ -41,8 +42,8 @@ const translations = {
          en: "Add ingredient"
      },
      "add.food.form.header" : {
-        fi: "lisää ravintoaine",
-         en: "add ingredient"
+        fi: "Lisää ravintoaine",
+         en: "Add ingredient"
      },
     "add.food.form.name" : {
       fi: "nimi (pakollinen)",
@@ -91,9 +92,36 @@ const translations = {
   "add.food.form.unit": {
      fi: "g",
      en: "g"
-     }
+     },
+  "food.table.name": {
+    fi: 'nimi',
+    en: 'name'
+  },
+  "food.table.serving": {
+      fi: 'annos (g)',
+      en: 'serving (g)'
+  },
+  "food.table.serving": {
+        fi: 'annos (g)',
+        en: 'serving (g)'
+  },
+  "food.table.protein": {
+        fi: 'proteiini (g)',
+        en: 'protein (g)'
+  },
+  "food.table.fats": {
+        fi: 'rasva (g)',
+        en: 'fats (g)'
+  },
+  "food.table.carbs": {
+        fi: 'hiilihydraatit (g)',
+        en: 'carbs (g)'
+  }
 }
 
-const localeHandler = (lang) => (key) => translations[key][lang];
+const localeHandler = (state) => {
+    const lang = ctrl(state).getLanguage();
+    return (key) => translations[key][lang];
+}
 
 export default localeHandler;

@@ -1,6 +1,7 @@
 import React from 'react';
 import calendarHandler from './calendar.jsx';
 import localeHandler from './translations.jsx';
+import ctrl from './controller.jsx';
 
 class CalendarTable extends React.Component {
   changeMonthButtons(nextMonth,prevMonth) {
@@ -16,9 +17,10 @@ class CalendarTable extends React.Component {
      </div>;
   }
   render () {
-    let update = this.props.update;
-    let calendar = calendarHandler(this.props.state);
-    let locale = localeHandler(this.props.state.saved.get('lang'));
+    const update = this.props.update;
+    const state = this.props.state;
+    const calendar = calendarHandler(this.props.state);
+    const locale = localeHandler(state);
 
 	const days = calendar.daysAroundCurrentMonth();
 	const dayComponent = (day,index) => {

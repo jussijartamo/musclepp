@@ -38,10 +38,10 @@ class AddFoodForm extends React.Component {
         this.setState({'carbs': this.numbers(event.target.value)})
     }
     render() {
-        let update = this.props.update;
-        let state = this.props.state;
+        const update = this.props.update;
+        const state = this.props.state;
         const close = () => update({unsaved: state.unsaved.delete('showAddFoodForm')});
-        let locale = localeHandler(this.props.state.saved.get('lang'));
+        const locale = localeHandler(state);
         const isValid = this.state.name != "" && this.state.name != undefined && !(this.state.serving === "0");
         const submit = () => {
             const food = {
@@ -59,7 +59,7 @@ class AddFoodForm extends React.Component {
             close();
         };
         return <div>
-           <h2>{locale('add.food.form.header')} <small><a href="#" onClick={close}>{locale('day.form.close')}</a></small></h2>
+           <h2>{locale('add.food.form.header')} <button type='button' className='btn close' onClick={close}>&times;</button></h2>
            <div className="row">
            <div className="col-md-6">
            <form className="form-horizontal">

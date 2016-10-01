@@ -1,4 +1,3 @@
 {
-  "presets" : ["es2015", "react"],
-  "plugins": ["transform-strict-mode"]
+  "presets" : ["es2015", "react"]
 }

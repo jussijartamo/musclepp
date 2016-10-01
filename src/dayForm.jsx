@@ -2,6 +2,7 @@ import React from 'react';
 import calendarHandler from './calendar.jsx';
 import localeHandler from './translations.jsx';
 import FoodTable from './foodTable.jsx';
+import {Glyphicon} from 'react-bootstrap';
 
 class DayForm extends React.Component {
     formGroup(id, label, callback, placeholder, addon, more) {
@@ -46,7 +47,7 @@ class DayForm extends React.Component {
         const update = this.props.update;
         const state = this.props.state;
         const calendar = calendarHandler(this.props.state);
-        const locale = localeHandler(this.props.state.saved.get('lang'));
+        const locale = localeHandler(state);
         const selectedDay = calendar.selectedDay();
         const hasFoodItems = this.getOrEmptyList(state.saved.get('foods')).length != 0;
         const date = selectedDay.getDate() + '. ' + locale('months')[selectedDay.getMonth()] + ' ' + selectedDay.getFullYear();
@@ -54,8 +55,11 @@ class DayForm extends React.Component {
         const addFoodCallback = () => update({unsaved: state.unsaved.set('showAddFoodForm', true)});
         const addFoodComponent = <a href="#" onClick={addFoodCallback}>{locale('day.form.search.add')}</a>;
         return <div>
-        <h2>{date} <small><a href="#" onClick={() => update(calendar.selectDay(null))}>{locale('day.form.close')}</a></small></h2>
         <div className="row">
+        <div className="col-md-offset-6 col-md-6 text-center">
+            <button type='button' className='btn close pull-right' onClick={() => update(calendar.selectDay(null))}>&times;</button>
+            <h2>{date}</h2>
+        </div>
         <div className="col-md-6">
             <div className="row">
             <form className="form-horizontal">
@@ -68,6 +72,7 @@ class DayForm extends React.Component {
             </div>
         </div>
         <div className="col-md-6">
+
             <form className="form-horizontal">
                 {this.formGroup("weight", locale("day.form.weight"), locale("day.form.weight.placeholder"), null, locale("day.form.weight.unit"))}
             </form>
