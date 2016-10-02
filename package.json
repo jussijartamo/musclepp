@@ -5,6 +5,7 @@
   "main": "./src/index.tsx",
   "scripts": {
     "test": "jest --no-cache",
+    "build": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
     "dev": "webpack-dev-server --progress --colors --port 8080 --content-base ./src"
   },
   "jest": {
