@@ -21,8 +21,7 @@ export class EditableCell extends React.Component<EditableProps,EditableState> {
     }
     componentDidUpdate(prevProps) {
       if(this.state.editMode) {
-          const field: any = this.refs['editableField'];//ReactDOM.findDOMNode();
-          console.log(field);
+          const field: any = this.refs['editableField'];
           field.focus();
       }
     }
@@ -48,7 +47,7 @@ export class EditableCell extends React.Component<EditableProps,EditableState> {
         }
         const onEnter = (event) => {
             if (event.keyCode == 13) {
-                const field: any = this.refs['editableField'];//ReactDOM.findDOMNode(this.refs['editableField']);
+                const field: any = this.refs['editableField'];
                 field.blur();
             }
         }
