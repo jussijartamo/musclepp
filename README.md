@@ -14,6 +14,7 @@
 
 ## Ideas to second release
 
+- Add sorting by headers to food table
 - Month view
 - Weight goals and calculate daily calories
 - Calculate suggested macros
