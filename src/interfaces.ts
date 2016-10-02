@@ -1,5 +1,10 @@
 import { Record, Map } from 'immutable';
 
+export interface LocalStorage {
+    getItem: (string) => {[key:string]:any};
+    setItem: (string, any) => void;
+}
+
 export interface Day {
     getWeekDayIndex: () => number; // 0-6
     getMonthIndex: () => number; // 0-11
@@ -22,6 +27,7 @@ export interface Controller {
     getState: () => State;
 }
 export interface State {
+    getSavedState: () => any;
     setLang: (string) => State;
     getLang: () => string;
     getWeek: () => Array<Day>;

@@ -3,8 +3,8 @@
 
 ## Roadmap to first release
 
-- [ ] Save data to local storage
 - [ ] Setup complete Jest tests
+- [x] Save data to local storage
 - [x] Setup Githup page
 - [x] Select language
 - [x] Select day

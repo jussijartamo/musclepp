@@ -11,6 +11,9 @@ export class AppState implements State {
         this.saved = fromJS(saved);
         this.unsaved = fromJS(unsaved);
     }
+    getSavedState(): any {
+        return this.saved.toJS();
+    }
     clone(s:Map<string,any>,u:Map<string,any>) {
         return new AppState(s.toJS(),u.toJS());
     }

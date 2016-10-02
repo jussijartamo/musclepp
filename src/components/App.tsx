@@ -3,11 +3,11 @@ import { Week } from './Week';
 import { Brand } from './Brand';
 import { Language } from './Language';
 import { Foods } from './Foods';
-import { State, Controller } from '../interfaces';
+import { State, Controller, LocalStorage } from '../interfaces';
 import { text } from '../translations';
 
-export class App extends React.Component<{state: State},{appState: State}> implements Controller {
-    constructor(props : {state: State}) {
+export class App extends React.Component<{localStorage: LocalStorage, state: State},{appState: State}> implements Controller {
+    constructor(props : {localStorage: LocalStorage, state: State}) {
         super(props);
         const state = this.props.state;
         this.state = {appState: state};
@@ -15,6 +15,7 @@ export class App extends React.Component<{state: State},{appState: State}> imple
 
     update(state: State): void {
         console.log(state);
+        this.props.localStorage.setItem('saved', state.getSavedState());
         this.setState({appState: state});
     }
     getState(): State {
