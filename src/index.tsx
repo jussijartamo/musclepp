@@ -16,9 +16,6 @@ const localStorage: LocalStorage = {
         window.localStorage.setItem(key,JSON.stringify(value));
     }
 };
-//let saved: {[key:string]:any} =
-//saved = saved ? saved : { lang: 'en', foods: {} };
-//console.log(saved);
 
 let init: any = localStorage.getItem('saved');
 if(!init) {
