@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Controller } from '../interfaces';
-import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export class Week extends React.Component<{ctrl: Controller},{}> {
     render() {
@@ -35,13 +34,7 @@ export class Week extends React.Component<{ctrl: Controller},{}> {
                 </tr>
             </thead>
             <tbody>
-                <ReactCSSTransitionGroup
-                      component="tr"
-                      transitionName="example"
-                      transitionEnterTimeout={500}
-                      transitionLeaveTimeout={300}>
-                      {days}
-                 </ReactCSSTransitionGroup>
+                <tr>{days}</tr>
             </tbody>
         </table>;
     }

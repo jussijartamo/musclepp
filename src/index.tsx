@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import { AppState } from "./appState";
 import { App } from "./components/App";
+import './components/style.less';
 
 const init = { lang: 'en', foods: {} };
 const now = new Date();

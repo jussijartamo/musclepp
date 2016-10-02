@@ -5,12 +5,12 @@ import { Language } from './Language';
 import { Foods } from './Foods';
 import { State, Controller } from '../interfaces';
 import { text } from '../translations';
-import './style.less';
 
 export class App extends React.Component<{state: State},{appState: State}> implements Controller {
     constructor(props : {state: State}) {
         super(props);
-        this.state = {appState: this.props.state};
+        const state = this.props.state;
+        this.state = {appState: state};
     }
 
     update(state: State): void {

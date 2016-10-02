@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 export interface EditableProps {
     classNames: string;
@@ -22,7 +21,7 @@ export class EditableCell extends React.Component<EditableProps,EditableState> {
     }
     componentDidUpdate(prevProps) {
       if(this.state.editMode) {
-          const field: any = ReactDOM.findDOMNode(this.refs['editableField']);
+          const field: any = this.refs['editableField'];//ReactDOM.findDOMNode();
           console.log(field);
           field.focus();
       }
@@ -49,7 +48,7 @@ export class EditableCell extends React.Component<EditableProps,EditableState> {
         }
         const onEnter = (event) => {
             if (event.keyCode == 13) {
-                const field: any = ReactDOM.findDOMNode(this.refs['editableField']);
+                const field: any = this.refs['editableField'];//ReactDOM.findDOMNode(this.refs['editableField']);
                 field.blur();
             }
         }
