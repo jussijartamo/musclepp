@@ -1,0 +1,83 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #999;
+    font-size: 28px;
+}
+.calorie {
+    font-size: 16px;
+    &:after {
+        content: "kcal";
+        font-size: 12px;
+        font-weight: bolder;
+        vertical-align:super;
+    }
+}
+.gram {
+    font-size: 16px;
+    &:after {
+        content: "g";
+        font-size: 12px;
+        font-weight: bolder;
+        vertical-align:super;
+    }
+}
+.brand {
+    text-transform: uppercase;
+    font-weight: bold;
+
+}
+.table tfoot tr td, .table tbody tr td, .table tbody tr th, .table thead tr th {
+    border: none;
+}
+* {
+  border-radius: 0 !important;
+}
+.table {
+    table-layout: fixed;
+}
+table.week tbody tr td.selected {
+    border-style: solid;
+    border-width: 1px 1px 7px 1px;
+    border-color: #eee;
+}
+.arrow-down {
+  margin-left: 25px;
+  margin-top: 15px;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #eee;
+}
+
+table.week tbody tr td {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -o-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+.hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+.selectable:hover {
+    .hover;
+}
+table.week tbody tr td:hover {
+    .hover;
+}
+.title {
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.title:hover {
+    cursor: default;
+}
+button.btn.disabled {
+    cursor: default;
+}
+

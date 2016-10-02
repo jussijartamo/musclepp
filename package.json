@@ -1,38 +1,57 @@
 {
   "name": "musclepp",
   "version": "1.0.0",
-  "description": "Online macro calculator",
-  "main": "src/index.jsx",
+  "description": "Macro calculator",
+  "main": "./src/index.tsx",
   "scripts": {
-    "test": "jest",
-    "dev": "webpack-dev-server --progress --colors --port 8090 --content-base ./src",
-    "build": "webpack -p"
+    "test": "jest --no-cache",
+    "dev": "webpack-dev-server --progress --colors --port 8080 --content-base ./src"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "globals": {
+      "__TS_CONFIG__": {
+        "module": "commonjs",
+        "jsx": "react"
+      }
+    }
   },
   "repository": {
     "type": "git",
-    "url": "musclepp"
+    "url": "git+https://github.com/jussijartamo/musclepp.git"
   },
-  "keywords": [
-    "fitness",
-    "macro"
-  ],
   "author": "Jussi Jartamo",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jussijartamo/musclepp/issues"
+  },
+  "homepage": "https://github.com/jussijartamo/musclepp#readme",
   "dependencies": {
-    "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "chart.js": "^2.3.0",
+    "datejs": "^1.0.0-rc3",
     "immutable": "^3.8.1",
-    "local-storage": "^1.4.2",
+    "moment": "^2.15.1",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
-    "react-bootstrap": "^0.30.3",
-    "react-chartjs": "^0.8.0",
-    "react-dom": "^15.3.2",
-    "webpack": "^1.13.2"
+    "react-addons-transition-group": "^15.3.2",
+    "react-dom": "^15.3.2"
   },
   "devDependencies": {
-    "jest-cli": "^15.1.1"
+    "babel-loader": "^6.2.5",
+    "css-loader": "^0.25.0",
+    "jest": "^15.1.1",
+    "jest-cli": "^15.1.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "react-test-renderer": "^15.3.2",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "ts-jest": "^0.1.5",
+    "ts-loader": "^0.8.2"
   }
 }

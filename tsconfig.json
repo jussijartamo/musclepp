@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react",
+    "declaration": false,
+    "removeComments": true
+  },
+  "filesGlob": [
+    "./**/*.+(ts|tsx)"
+  ],
+  "files": [
+    "./typings/index.d.ts",
+    "./src/components/App.tsx",
+    "./src/components/Week.tsx",
+    "./src/components/Brand.tsx",
+    "./src/components/Language.tsx",
+    "./src/components/Foods.tsx",
+    "./src/components/FoodRow.tsx",
+    "./src/components/EditableCell.tsx",
+    "./src/translations.ts",
+    "./src/appState.ts",
+    "./src/interfaces.ts",
+    "./src/index.tsx"
+  ]
+}
